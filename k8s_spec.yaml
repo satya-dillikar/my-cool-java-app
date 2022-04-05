@@ -1,0 +1,38 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nginx-sample-traffic
+  labels:
+    name: nginx-sample-traffic
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: tanzu-java-web-app
+  namespace: nginx-sample-traffic
+  labels:
+    app: tanzu-java-web-app
+spec:
+  containers:
+    - name: tanzu-java-web-app
+      image: dsatya6/tanzu-java-web-app:0.1.0
+      resources:
+        limits:
+          cpu: 1000m
+          memory: 1000Mi
+        requests:
+          cpu: 500m
+          memory: 500Mi
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: tanzu-java-web-app-service
+  namespace: nginx-sample-traffic
+spec:
+  type: LoadBalancer
+  selector:
+    app: tanzu-java-web-app
+  ports:
+    - port: 8080  # Default port for image
