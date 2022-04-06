@@ -38,7 +38,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.show-details="always" -Dmanagement.endpoints.web.base-path="/actuator" -Dmanagement.endpoints.web.exposure.include="*" -Dmanagement.server.port="8080" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: dev.registry.pivotal.io/sdillikar/tap-supply-chain/my-cool-java-app-mydev-ns@sha256:d91c7efd7335273e39ef2a0ce648d2e488ac22162d3d48247e9eaa4163e468ba
+        image: dev.registry.pivotal.io/sdillikar/tap-supply-chain/my-cool-java-app-mydev-ns@sha256:45fc2da87539113cd16768ebabe0bd2115f403451fcabf29b06eef27b93e5b3e
         name: workload
         ports:
         - containerPort: 8080
