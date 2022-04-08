@@ -1,0 +1,22 @@
+connector:
+  name: my-cool-java-app
+  identifier: mycooljavaapp
+  description:
+  orgIdentifier: default
+  projectIdentifier: webapp
+  type: Github
+  spec:
+    url: https://github.com/satya-dillikar/my-cool-java-app
+    authentication:
+      type: Http
+      spec:
+        type: UsernameToken
+        spec:
+          username: satya-dillikar
+          tokenRef: githubpat
+    apiAccess:
+      type: Token
+      spec:
+        tokenRef: githubpat
+    executeOnDelegate: false
+    type: Repo
