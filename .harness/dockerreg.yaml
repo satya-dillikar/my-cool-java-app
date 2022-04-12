@@ -1,0 +1,17 @@
+connector:
+  name: docker-reg
+  identifier: dockerreg
+  description:
+  orgIdentifier: default
+  projectIdentifier: webapp
+  type: DockerRegistry
+  spec:
+    dockerRegistryUrl: docker.io
+    providerType: DockerHub
+    auth:
+      type: UsernamePassword
+      spec:
+        username: dsatya6
+        passwordRef: dockerhub
+    delegateSelectors:
+    - laptop-delegate-new
