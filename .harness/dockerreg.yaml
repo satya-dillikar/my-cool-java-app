@@ -1,12 +1,11 @@
 connector:
   name: docker-reg
   identifier: dockerreg
-  description:
   orgIdentifier: default
   projectIdentifier: webapp
   type: DockerRegistry
   spec:
-    dockerRegistryUrl: docker.io
+    dockerRegistryUrl: https://index.docker.io/v1/
     providerType: DockerHub
     auth:
       type: UsernamePassword
