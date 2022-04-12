@@ -1,0 +1,44 @@
+pipeline:
+    name: pipeline1
+    identifier: pipeline1
+    allowStageExecutions: false
+    projectIdentifier: webapp
+    orgIdentifier: default
+    tags: {}
+    properties:
+        ci:
+            codebase:
+                connectorRef: mycooljavaapp
+                build: <+input>
+    stages:
+        - stage:
+              name: build
+              identifier: build
+              type: CI
+              spec:
+                  cloneCodebase: true
+                  infrastructure:
+                      type: KubernetesDirect
+                      spec:
+                          connectorRef: k8s
+                          namespace: mydev-ns
+                  execution:
+                      steps:
+                          - step:
+                                type: BuildAndPushDockerRegistry
+                                name: dockerpush
+                                identifier: dockerpush
+                                spec:
+                                    connectorRef: dockerreg
+                                    repo: mycoolapp
+                                    tags:
+                                        - 0.0.1
+                          - step:
+                                type: Run
+                                name: run
+                                identifier: run
+                                spec:
+                                    connectorRef: dockerreg
+                                    image: mycoolapp
+                                    shell: Sh
+                                    command: date
