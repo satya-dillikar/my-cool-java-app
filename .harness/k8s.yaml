@@ -1,0 +1,12 @@
+connector:
+  name: k8s
+  identifier: k8s
+  description:
+  orgIdentifier: default
+  projectIdentifier: webapp
+  type: K8sCluster
+  spec:
+    credential:
+      type: InheritFromDelegate
+    delegateSelectors:
+    - laptop-delegate-new
